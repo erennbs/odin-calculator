@@ -83,7 +83,10 @@ function onOthersClick(e) {
             break;
         case '=':
             calculate();
-            break;    
+            break;
+        case '.':
+            makeFloat();
+            break;  
         default:
             break;
     }
@@ -116,6 +119,19 @@ function calculate() {
     num1 = result.toString();
     num2 = '';
     operator = null;
+}
+
+function makeFloat() {
+    if (!operator) {
+        // First number
+        if (num1.includes('.')) return;
+        num1 += '.';
+        updateAnswerDiv(num1);
+    } else {
+        if (num2.includes('.')) return;
+        num2 += '.';
+        updateAnswerDiv(num1);
+    }
 }
 
 function updateCalculationDiv(text) {
