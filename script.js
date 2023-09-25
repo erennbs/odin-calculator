@@ -87,6 +87,9 @@ function onOthersClick(e) {
         case '.':
             makeFloat();
             break;  
+        case '+/-':
+            changeSign();
+            break;
         default:
             break;
     }
@@ -128,9 +131,26 @@ function makeFloat() {
         num1 += '.';
         updateAnswerDiv(num1);
     } else {
+        // Second number
         if (num2.includes('.')) return;
         num2 += '.';
         updateAnswerDiv(num1);
+    }
+}
+
+function changeSign() {
+    if (!operator) {
+        // First Number
+        if(num1) {
+            num1 = (+num1 * -1).toString();
+            updateAnswerDiv(num1);
+        }
+    } else {
+        // Second Number
+        if(num2) {
+            num2 = (+num2 * -1).toString();
+            updateAnswerDiv(num2);
+        }
     }
 }
 

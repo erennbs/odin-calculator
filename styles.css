@@ -71,10 +71,6 @@ button {
     height: 80%;
 }
 
-.ac-button {
-    width: var(--button-width-2x);
-}
-
 .calculate-button {
     width: var(--button-width-2x);
 }
