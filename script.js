@@ -27,7 +27,7 @@ function multiply(a, b) {
 function divide(a, b) {
     if (+b === 0) return NaN;
 
-    return +a / +b;
+    return (+a / +b).toFixed(3);
 }
 
 function operate(num1, num2, operator) {
@@ -53,13 +53,18 @@ function onOperatorClick(e) {
     if (!operator) {
         operator = e.target.value;
     } else {
-        result = operate(num1, num2, operator);
-        num1 = result.toString();
-        num2 = '';
-        operator = e.target.value;
-        updateCalculationDiv(`${num1} ${operator} `);
-        updateAnswerDiv(result);
+        if (num2) {
+            result = operate(num1, num2, operator);
+            num1 = result.toString();
+            num2 = '';
+            operator = e.target.value;
+            updateAnswerDiv(result);
+        } else {
+            // Second number not entered
+            operator = e.target.value;
+        }
     }
+    updateCalculationDiv(`${num1} ${operator} `);
 }
 
 function onOthersClick(e) {
