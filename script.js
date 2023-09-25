@@ -27,7 +27,13 @@ function multiply(a, b) {
 function divide(a, b) {
     if (+b === 0) return NaN;
 
-    return (+a / +b).toFixed(3);
+    result = (+a / +b);
+
+    if(result.toString().includes('.')) {
+        return +result.toFixed(5);
+    }
+
+    return result;
 }
 
 function operate(num1, num2, operator) {
